@@ -17,5 +17,6 @@ export default async function handler(req, res) {
     console.log(error);
   });
   // display repos
-  res.json(repos);
+  // res.json(repos);
+  return repos;
 }

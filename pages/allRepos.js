@@ -1,8 +1,14 @@
-
-
-export default function All(repos) {
-    console.log("repos: ", repos);
+export default function All({repos}) {
+    console.log("repos on allRepos: ", repos);
     return (
-        <div></div>
+
+        <div>
+            {repos.map((x) => {
+                return (
+                    <div>{x.name}</div>
+                )
+            })}
+        </div>
+
     )
 }
