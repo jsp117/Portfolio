@@ -3,7 +3,7 @@ import AllRepos from './allRepos';
 import { useEffect, useState } from 'react';
 import githubApi from './api/github';
 
-export default function App({ files }) {
+export default function App({ files, notFound }) {
   console.log("new files: ", files);
 
 
