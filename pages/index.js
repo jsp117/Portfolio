@@ -1,14 +1,31 @@
 import ActiveLink from "./router";
-import AllRepos from './allRepos';
+import AllRepos from '../components/repos';
+import Landing from '../components/landing';
 import { useEffect, useState } from 'react';
 import githubApi from './api/github';
+import Navbar from '../components/navbar';
+import { useRouter } from 'next/router'
+import { Router } from 'react-router';
+import Carousel from '../components/carousel';
 
 export default function App({ files, notFound }) {
-  console.log("new files: ", files);
+  const [page, setPage] = useState('/');
+  useEffect(()=>{
+  }, [page])
+  // console.log("page: ", page);
 
-
+  function newPage(x){
+    setPage(x);
+  }
+  // console.log("new files: ", files);
+  const router = useRouter();
+  console.log("Router home: ", router);
   return (
-    <AllRepos repos={files}></AllRepos>
+    <div>
+      <Navbar page={page} newPage={newPage}></Navbar>
+      <Landing></Landing>
+      {page == "/projects" ? <AllRepos repos={files}></AllRepos> : <Carousel></Carousel>}
+    </div>
   )
 }
 
